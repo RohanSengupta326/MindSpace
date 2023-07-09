@@ -16,4 +16,6 @@ body{
     box-shadow: none!important;
     color: #ffffff!important;
   }
-  
+  .question{
+    color: green;
+  }
