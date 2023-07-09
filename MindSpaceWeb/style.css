@@ -1,0 +1,19 @@
+body{
+    /* background-color: #e3f2fd; */
+}
+
+.carousel-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer & Edge */
+  }
+  
+  .carousel-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  .navbar {
+    box-shadow: none!important;
+    color: #ffffff!important;
+  }
+  
