@@ -19,3 +19,63 @@ body{
   .question{
     color: green;
   }
+  .doctor{
+    height:400px;
+    width:400px;
+    margin-left:1000px;
+  
+  }
+  .-ml200{
+    margin-left:-200px;
+  }
+  .-mt250{
+    margin-top:-250px;
+  }
+  .-mt300{
+    margin-top:-300px;
+  }
+  .-mt350{
+    margin-top:-350px;
+  }
+  .-mt150{
+    margin-top: 150px;
+  }
+  .-mt200{
+    margin-top: -200px;
+  }
+  .-ml400{
+    margin-left:-400px;
+  }
+  .-ml300{
+    margin-left:-300px;
+  }
+  .-ml200{
+    margin-left:-200px;
+  }
+  .-ml100{
+    margin-left:-100px;
+  }
+  .-ml150{
+    margin-left:-150px;
+  }
+  .-ml50{
+    margin-left:-50px;
+  }
+  .-ml10{
+    margin-left:-10px;
+  }
+  .mt150{
+    margin-top:150px;
+  }
+  .mt220{
+    margin-top:220px;
+  }
+  .mt250{
+    margin-top:250px;
+  }
+  .mt300{
+    margin-top:300px;
+  }
+  .text-size{
+    font-size: xx-large;
+  }
