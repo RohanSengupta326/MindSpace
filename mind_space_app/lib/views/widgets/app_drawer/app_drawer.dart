@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -64,23 +65,29 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _messageController = TextEditingController();
   final List<String> _messages = [];
+  bool _isLoading = false; // Track loading state
 
   Future<String> chatWithGPT(String message) async {
     final apiUrl = 'https://api.openai.com/v1/chat/completions';
     final headers = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer YOUR_API_KEY',
+      'Authorization':
+          'Bearer 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',
     };
 
     final body = {
+      'model': 'gpt-3.5-turbo-0301',
       'messages': [
         {'role': 'system', 'content': 'You are a user.'},
         {'role': 'user', 'content': message}
       ],
+      'max_tokens': 1000,
     };
 
     final response = await http.post(Uri.parse(apiUrl),
         headers: headers, body: jsonEncode(body));
+
+    log(response.body);
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -95,12 +102,14 @@ class _ChatScreenState extends State<ChatScreen> {
   void _sendMessage(String message) async {
     setState(() {
       _messages.add(message);
+      _isLoading = true;
     });
 
     final response = await chatWithGPT(message);
 
     setState(() {
       _messages.add(response);
+      _isLoading = false;
     });
 
     // Clear the message input field
@@ -111,7 +120,14 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AI Chat'),
+        titleSpacing: 0,
+        title: Text(
+          'AI Chat : ask AI about your mental health',
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontSize: 15,
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -140,16 +156,24 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 IconButton(
                   icon: Icon(Icons.send),
-                  onPressed: () {
-                    final message = _messageController.text;
-                    if (message.isNotEmpty) {
-                      _sendMessage(message);
-                    }
-                  },
+                  onPressed: _isLoading // Disable button while loading
+                      ? null
+                      : () {
+                          final message = _messageController.text;
+                          if (message.isNotEmpty) {
+                            _sendMessage(message);
+                          }
+                        },
                 ),
               ],
             ),
           ),
+          if (_isLoading)
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(16),
+              child: CircularProgressIndicator(), // Show loading indicator
+            ),
         ],
       ),
     );
