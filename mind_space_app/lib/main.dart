@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -37,16 +39,34 @@ class MyApp extends StatelessWidget {
               color: Colors.green, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
-      home: const MyHomePage(title: 'Mind Space'),
+      home: SplashScreen(),
     );
   }
 }
 
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => MyHomePage())));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Colors.white, child: Image.asset("assets/applogo.png"));
+  }
+}
+
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }

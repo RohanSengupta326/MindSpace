@@ -6,7 +6,11 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:mind_space_app/controller/auth_user_controller.dart';
+
 class AppDrawer extends StatelessWidget {
+  final authUserController = AuthUserController();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -50,6 +54,13 @@ class AppDrawer extends StatelessWidget {
               Get.back(); // Close the drawer
               Get.to(ChatScreen());
             },
+          ),
+          ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStatePropertyAll(Theme.of(context).primaryColor)),
+            onPressed: () => authUserController.logOut(),
+            child: Text('LogOut'),
           ),
         ],
       ),

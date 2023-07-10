@@ -43,10 +43,20 @@ dependencies:
   google_sign_in: ^6.1.4
   http: ^0.13.6
   flutter_html: ^2.2.1
+  flutter_launcher_icons: ^0.10.0
+  rename_app: ^1.1.0
+
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+  
+
+flutter_icons:
+  image_path: "assets/applogo.png"
+  android: true
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -76,6 +86,7 @@ flutter:
     - assets/images/b3.jpg
     - assets/images/b4.jpg
     - assets/images/b5.jpg
+    - assets/applogo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
