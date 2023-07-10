@@ -20,20 +20,24 @@
   <div class="row">
     <div class="col">
       <nav class="navbar navbar-expand" style="background-color: white;">
-        <a class="navbar-brand ms-5" style="color: green; font-size: xx-large; font-weight: bolder;" href="#">MindSpace</a>
+        <a class="navbar-brand ms-5" style="color: green; font-size: xx-large; font-weight: bolder;" href="/" target="_self"><img style="height:5rem; width:5rem;" src="./StressIcon_CodeBlaze.png" alt=""></a>
+        <a class="navbar-brand" style="color: green; font-size: xx-large; font-weight: bolder;" href="/" target="_self">MindSpace</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active ms-5" style="color: green;"  aria-current="page" href="#">Home</a>
+              <a class="nav-link active ms-5 home" style="color: green;"  aria-current="page" href="/" target="_self">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ms-2" style="color: green;"  href="#">Download</a>
+              <a target="_blank" class="nav-link ms-2 download" style="color: green;"  href="#Download">Download</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ms-2" style="color: green;"  href="#">About</a>
+              <a class="nav-link ms-2 about" style="color: green;"  href="#About">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ms-2 contact" style="color: green;"  href="#contact">Contact</a>
             </li>
           </ul>
         </div>
@@ -56,19 +60,12 @@
       <img src="./Frontpagedoctor.png" class="img-fluid" alt="Image">
     </div>
     <div class="-mt100">
-      <a href=""><img style="height:15rem; width: 15rem;" src="./google-play-logo.png" alt=""></a>
+      <a id="Download" href=""><img style="height:15rem; width: 15rem;" src="./google-play-logo.png" alt=""></a>
     </div>
     
   </div>
 </div>
 
-<!-- 
-<div class="container">
-  <div class="row">
-    <div class="col">
-    </div>
-  </div>
-</div> -->
 
   <div class="card mb-3 mt500"  style="min-width:79.9rem; background-color: #349c74;">
         <div class="row g-0">
@@ -86,21 +83,11 @@
       </div>
   
 
-      
-<!--   
-<div class="card" style="width: 18rem;">
-  <img src="./mental-health.png" style="height:10rem; width: 10rem;" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> -->
 
 <div class="container-fluid mt-5 ml50">
   <div class="row">
     <div class="col">
-      <h1 class="text-center">Why our mental health consultants are the best choice ?</h1>
+      <h1 class="ml200">Why our mental health consultants are the best choice ?</h1>
     </div>
   </div>
 </div>
@@ -115,41 +102,29 @@
 
 
 
-<div class="container mt-5 ml150">
+<div class="container mt-5 ml220">
   <div class="row row-cols-1 row-cols-md-3 g-5">
     <div class="col">
-      <div class="card h-100 ms-3" style="height:10rem; width: 10rem;">
+      <div class="card h-100 ms-3" style="height:15rem; width: 15rem;">
         <img src="./mental-health.png"class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-body-secondary">Last updated 3 mins ago</small>
+          <h5 class="card-title">The Mind's Symphony</h5>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card h-100 ms-4" style="height:10rem; width: 10rem;">
+      <div class="card h-100 ms-4" style="height:15rem; width: 15rem;">
         <img src="./mental-health (1).png" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-body-secondary">Last updated 3 mins ago</small>
+          <h5 class="card-title">A Journey Within</h5>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card h-100 ms-4" style="height:10rem; width: 10rem;">
+      <div class="card h-100 ms-4" style="height:15rem; width: 15rem;">
         <img src="./mental_sustainability.png" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-body-secondary">Last updated 3 mins ago</small>
+          <h5 class="card-title">Navigating the Emotional Spectrum</h5>
         </div>
       </div>
     </div>
@@ -212,11 +187,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 mt-5">
-            <h5>About Us</h5>
+            <h5 id="About">About Us</h5>
             <p>Welcome to our mental health support website! At <b>MindSpace</b>, we are dedicated to offering a helping hand to individuals facing challenges related to mental health. Our mission is to create a safe and supportive space where people can find the resources, guidance, and community they need to navigate their mental health journeys.</p>
           </div>
           <div class="col-md-6 mt-5">
-            <h5>Contact Info</h5>
+            <h5 id="contact">Contact Info</h5>
             <ul class="list-unstyled mt-2">
               <li>Email: example@example.com</li>
               <li>Phone: +1 123-456-7890</li>

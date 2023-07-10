@@ -162,3 +162,19 @@ body {
 .text-size {
   font-size: xx-large;
 }
+.home:hover{
+  color:green;
+  text-decoration: underline;
+}
+.download:hover{
+  color:green;
+  text-decoration: underline;
+}
+.contact:hover{
+  color:green;
+  text-decoration: underline;
+}
+.about:hover{
+  color:green;
+  text-decoration: underline;
+}
