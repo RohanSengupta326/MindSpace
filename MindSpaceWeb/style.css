@@ -166,15 +166,15 @@ body {
   color:green;
   text-decoration: underline;
 }
-.download:hover{
+#Download:hover{
   color:green;
   text-decoration: underline;
 }
-.contact:hover{
+#Contact:hover{
   color:green;
   text-decoration: underline;
 }
-.about:hover{
+#About:hover{
   color:green;
   text-decoration: underline;
 }
