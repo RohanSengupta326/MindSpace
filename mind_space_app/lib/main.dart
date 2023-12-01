@@ -15,7 +15,14 @@ void main() async {
   );
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // initializing firebase
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyDDY5d2rM3MtGKuXy7VUrET0_H9hjbn5gY",
+      appId: "1:458649774710:web:172e2a30da9b22c6facd57",
+      messagingSenderId: "458649774710",
+      projectId: "mind-space-cf491",
+    ),
+  ); // initializing firebase
 
   runApp(
     const MyApp(), // Wrap your app

@@ -16,7 +16,6 @@ class UploadImage extends StatefulWidget {
 }
 
 class _UploadImageState extends State<UploadImage> {
-  double responsiveFontSize = Get.width * 0.04;
   final AuthUserController controller = Get.find();
   XFile? _pickedImage;
 
@@ -58,8 +57,8 @@ class _UploadImageState extends State<UploadImage> {
           icon: Icon(Icons.image, color: Theme.of(context).primaryColor),
           label: Text(Dialogs.UPLOAD_IMAGE_REQUEST,
               style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: responsiveFontSize)),
+                color: Theme.of(context).primaryColor,
+              )),
         ),
       ],
     );
