@@ -89,9 +89,6 @@ class AuthUserController extends GetxController {
             'dpUrl': dpUrl,
           },
         );
-
-        await fetchAllUsers();
-        //new users signed up so update all users list
       }
 
       isLoadingAuth.value = false;
@@ -118,27 +115,36 @@ class AuthUserController extends GetxController {
   }
 
   Future<void> googleUserSignUp() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+    print('\nENTERED - SIGNUP CONTROLLER');
+    // final GoogleSignIn googleSignIn = GoogleSignIn();
     UserCredential userCredential;
 
     try {
       isGoogleLoadingAuth.value = true;
+      print('\nTRYING SIGNIN NOW...');
 
       // interactive page pops up
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      // final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      GoogleAuthProvider authProvider = GoogleAuthProvider();
 
+      userCredential = await auth.signInWithPopup(authProvider);
+
+      print('\nCALLED SIGNIN CALL ...');
       // authenticate user
-      final GoogleSignInAuthentication googleUserAuthentication =
-          await googleUser!.authentication;
+      // final GoogleSignInAuthentication googleUserAuthentication =
+      //     await googleUser!.authentication;
 
-      // get user credentials
-      final OAuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleUserAuthentication.accessToken,
-        idToken: googleUserAuthentication.idToken,
-      );
+      // // get user credentials
+      // final OAuthCredential credential = GoogleAuthProvider.credential(
+      //   accessToken: googleUserAuthentication.accessToken,
+      //   idToken: googleUserAuthentication.idToken,
+      // );
+      // print('\nGOT USER CREDENTIAL ...');
 
-      // login / sign up with firebase into the app
-      userCredential = await _auth.signInWithCredential(credential);
+      // // login / sign up with firebase into the app
+      // userCredential = await _auth.signInWithCredential(credential);
+      // print('\nUSER SIGNED IN WITH CREDENTIAL ... ');
 
       if (userCredential.user == null) {
         throw Dialogs.GENERIC_ERROR_MESSAGE;
@@ -157,15 +163,13 @@ class AuthUserController extends GetxController {
             .doc(userCredential.user!.uid)
             .set(
           {
-            'username': googleUser.displayName ?? '',
-            'email': googleUser.email,
-            'dpUrl': googleUser.photoUrl ?? '',
+            'username': userCredential.user?.displayName ?? '',
+            'email': userCredential.user?.email ?? '',
+            'dpUrl': userCredential.user?.photoURL ?? '',
           },
         );
-
-        await fetchAllUsers();
-        //new users signed up so update all users list
       }
+      print('\nSTORED USER DATA');
 
       isGoogleLoadingAuth.value = false;
     } catch (error) {
@@ -182,30 +186,6 @@ class AuthUserController extends GetxController {
     ];
     await GoogleSignIn()
         .disconnect(); // lets user choose mail again, before signing up
-  }
-
-  Future<void> fetchAllUsers() async {
-    _users = [];
-
-    try {
-      isUserFetching.value = true;
-
-      final allUsers =
-          await FirebaseFirestore.instance.collection('users').get();
-
-      for (var i = 0; i < allUsers.docs.length; i++) {
-        _users.add(
-          UsersDetails(
-            allUsers.docs[i].data()['username'],
-            allUsers.docs[i].data()['email'],
-          ),
-        );
-      }
-
-      isUserFetching.value = false;
-    } catch (error) {
-      throw Dialogs.GENERIC_ERROR_MESSAGE;
-    }
   }
 
   Future<void> fetchUserData() async {

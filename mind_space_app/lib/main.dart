@@ -18,9 +18,12 @@ void main() async {
   await Firebase.initializeApp(
     options: FirebaseOptions(
       apiKey: "AIzaSyDDY5d2rM3MtGKuXy7VUrET0_H9hjbn5gY",
-      appId: "1:458649774710:web:172e2a30da9b22c6facd57",
-      messagingSenderId: "458649774710",
+      authDomain: "mind-space-cf491.firebaseapp.com",
       projectId: "mind-space-cf491",
+      storageBucket: "mind-space-cf491.appspot.com",
+      messagingSenderId: "458649774710",
+      appId: "1:458649774710:web:172e2a30da9b22c6facd57",
+      measurementId: "G-MLFE2ZRB4N",
     ),
   ); // initializing firebase
 

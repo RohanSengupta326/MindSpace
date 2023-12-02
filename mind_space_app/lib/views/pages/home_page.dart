@@ -51,9 +51,9 @@ class _HomePageState extends State<HomePage> {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = jsonDecode(response.body);
+      print(response.body);
       final List<dynamic> issues = data['hasPart'] as List<dynamic>;
       final List<Issue> issueList = issues
-          .take(20)
           .map((issue) => Issue(
                 headline: issue['headline'] as String,
                 text: issue['hasPart'][0]['text'] as String,
@@ -105,7 +105,12 @@ class _HomePageState extends State<HomePage> {
               future: fetchMentalHealthIssues(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.green,
+                      strokeWidth: 3,
+                    ),
+                  );
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else if (snapshot.hasData) {
@@ -113,9 +118,10 @@ class _HomePageState extends State<HomePage> {
                   return GridView.builder(
                     padding: EdgeInsets.all(16),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
+                      crossAxisCount: 3,
                       crossAxisSpacing: 16,
                       mainAxisSpacing: 16,
+                      childAspectRatio: 2,
                     ),
                     itemCount: issues.length,
                     itemBuilder: (context, index) {

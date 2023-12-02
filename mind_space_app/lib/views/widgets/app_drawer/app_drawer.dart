@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -74,6 +75,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  int chatCounter = 0;
   final TextEditingController _messageController = TextEditingController();
   final List<String> _messages = [];
   bool _isLoading = false; // Track loading state
@@ -83,13 +85,13 @@ class _ChatScreenState extends State<ChatScreen> {
     final headers = {
       'Content-Type': 'application/json',
       'Authorization':
-          'Bearer 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',
+          'Bearer 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',
     };
 
     final body = {
-      'model': 'gpt-3.5-turbo-0301',
+      'model': 'gpt-3.5-turbo',
       'messages': [
-        {'role': 'system', 'content': 'You are a user.'},
+        {"role": "system", "content": "You are a helpful assistant."},
         {'role': 'user', 'content': message}
       ],
       'max_tokens': 1000,
@@ -98,7 +100,7 @@ class _ChatScreenState extends State<ChatScreen> {
     final response = await http.post(Uri.parse(apiUrl),
         headers: headers, body: jsonEncode(body));
 
-    log(response.body);
+    print('\n${response.body}');
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -113,6 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void _sendMessage(String message) async {
     setState(() {
       _messages.add(message);
+
       _isLoading = true;
     });
 
@@ -120,6 +123,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     setState(() {
       _messages.add(response);
+
       _isLoading = false;
     });
 
@@ -129,63 +133,137 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
         title: Text(
-          'AI Chat : ask AI about your mental health',
+          'Chat With AI',
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            fontSize: 15,
+            fontWeight: FontWeight.bold,
+            color: Colors.green,
+            fontSize: 25,
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                final message = _messages[index];
-                return ListTile(
-                  title: Text(message),
-                );
-              },
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _messageController,
-                    decoration: InputDecoration(
-                      hintText: 'Type your message...',
-                    ),
+      body: Center(
+        child: SizedBox(
+          width: screenWidth * 0.5,
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _messages.length,
+                  itemBuilder: (context, index) {
+                    final message = _messages[index];
+                    final sender = index % 2 == 0 ? 'You' : 'Mind Mate';
+
+                    return ListTile(
+                      // leading: Text(
+                      //   (chatCounter % 2) == 0 ? 'ChatGPT\n\n\n' : 'You\n\n\n',
+                      //   style: TextStyle(
+                      //     fontWeight: FontWeight.bold,
+                      //     fontSize: 20,
+                      //     color: chatCounter % 2 == 0
+                      //         ? Colors.green
+                      //         : Colors.black,
+                      //   ),
+                      // ),
+                      title: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              '${sender}\n',
+                              style: TextStyle(
+                                color: index % 2 == 0
+                                    ? Colors.black
+                                    : Colors.green,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              '$message\n',
+                              softWrap: true,
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+              if (_isLoading)
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(16),
+                  child: CircularProgressIndicator(
+                    color: Colors.green,
+                  ), // Show loading indicator
+                ),
+              Center(
+                child: Container(
+                  width: screenWidth * 0.5,
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: _messageController,
+                          cursorColor: Colors.green,
+                          decoration: InputDecoration(
+                            hintText: 'Type your message...',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.green,
+                                width: 3,
+                                style: BorderStyle.solid,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.green,
+                                width: 3,
+                                style: BorderStyle.solid,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.send,
+                          color: Colors.green,
+                        ),
+                        onPressed: _isLoading // Disable button while loading
+                            ? null
+                            : () {
+                                final message = _messageController.text;
+                                _messageController.clear();
+                                if (message.isNotEmpty) {
+                                  _sendMessage(message);
+                                }
+                              },
+                      ),
+                    ],
                   ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: _isLoading // Disable button while loading
-                      ? null
-                      : () {
-                          final message = _messageController.text;
-                          if (message.isNotEmpty) {
-                            _sendMessage(message);
-                          }
-                        },
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          if (_isLoading)
-            Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(16),
-              child: CircularProgressIndicator(), // Show loading indicator
-            ),
-        ],
+        ),
       ),
     );
   }
