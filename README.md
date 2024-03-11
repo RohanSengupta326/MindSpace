@@ -22,7 +22,9 @@ This Flutter web application serves as a comprehensive resource for individuals 
 2. **Installation:**
    - Clone this repository: `git clone https://github.com/RohanSengupta326/MindSpace`
    - Navigate to the project directory: `cd MindSpace`
-   - Install dependencies: `flutter pub get`
+   - install ` fvm ` and install the required version of flutter ( check version here : /MindSpace/mind_space_app/.fvm/fvm_config.json )
+   - Install dependencies: `fvm flutter pub get`
+   - run ` fvm flutter run -d web-server`
 
 3. **Configuration:**
    - Replace `YOUR_OPENAI_API_KEY` in `MindSpace/mind_space_app/lib/views/widgets/app_drawer/app_drawer.dart` with your actual OpenAI API key.
