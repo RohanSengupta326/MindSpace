@@ -2,6 +2,8 @@
 
 This Flutter web application serves as a comprehensive resource for individuals seeking information and support regarding mental health. It combines informative content with the power of AI-driven conversation to empower users on their journey towards well-being.
 
+Access the site @ https://mindspaceuniverse.netlify.app/
+
 **Features**
 
 - **Mental Health Knowledge Base:** Access a curated list of mental health issues along with detailed descriptions and potential remedies. Leverage the API integration to retrieve this information.
