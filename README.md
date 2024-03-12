@@ -24,7 +24,6 @@ This Flutter web application serves as a comprehensive resource for individuals 
    - Navigate to the project directory: `cd MindSpace`
    - install ` fvm ` and install the required version of flutter ( check version here : /MindSpace/mind_space_app/.fvm/fvm_config.json )
    - Install dependencies: `fvm flutter pub get`
-   - run ` fvm flutter run -d web-server`
 
 3. **Configuration:**
    - Replace `YOUR_OPENAI_API_KEY` in `MindSpace/mind_space_app/lib/views/widgets/app_drawer/app_drawer.dart` with your actual OpenAI API key.
@@ -39,7 +38,7 @@ This Flutter web application serves as a comprehensive resource for individuals 
      ```
 
 4. **Run the Application:**
-   - Start the development server: `flutter run -d web-server`
+   - Start the development server: `fvm flutter run -d web-server`
    - Access the application in your web browser (usually at `http://localhost:8080/`).
 
 **Usage**
