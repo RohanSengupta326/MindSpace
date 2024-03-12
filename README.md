@@ -10,6 +10,10 @@ This Flutter web application serves as a comprehensive resource for individuals 
 
 ## Screenshots :
 
+![Screenshot_2024-03-12_11-23-49](https://github.com/RohanSengupta326/MindSpace/assets/64458868/a6840516-b211-4247-b3e2-1e231760d8ba)
+![Screenshot_2024-03-12_10-31-12](https://github.com/RohanSengupta326/MindSpace/assets/64458868/4d13c238-aeb2-4061-ae16-8c8559f09030)
+![Screenshot_2024-03-12_10-30-30](https://github.com/RohanSengupta326/MindSpace/assets/64458868/eb426e61-e507-43ac-b639-39561cdcd499)
+![Screenshot_2024-03-12_10-29-41](https://github.com/RohanSengupta326/MindSpace/assets/64458868/35a9540f-c52f-47e5-acc4-50533e43c61e)
 
 
 
