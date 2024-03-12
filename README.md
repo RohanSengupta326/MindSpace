@@ -9,7 +9,13 @@ This Flutter web application serves as a comprehensive resource for individuals 
 - **User-Friendly Interface:** Navigate the application seamlessly with a clean and intuitive design optimized for web browsers.
 
 ## Screenshots :
-
+![Screenshot_2024-03-12_11-27-58](https://github.com/RohanSengupta326/MindSpace/assets/64458868/de44bd57-eca0-4124-85b6-9e94564ac119)
+![Screenshot_2024-03-12_11-28-18](https://github.com/RohanSengupta326/MindSpace/assets/64458868/1249a149-792a-4541-b5c4-eb67aa5b2f90)
+![Screenshot_2024-03-12_11-28-08](https://github.com/RohanSengupta326/MindSpace/assets/64458868/92f8ba91-fae0-4c2f-bc4c-c261af0e49f0)
+![Screenshot_2024-03-12_11-23-49](https://github.com/RohanSengupta326/MindSpace/assets/64458868/a6840516-b211-4247-b3e2-1e231760d8ba)
+![Screenshot_2024-03-12_10-31-12](https://github.com/RohanSengupta326/MindSpace/assets/64458868/4d13c238-aeb2-4061-ae16-8c8559f09030)
+![Screenshot_2024-03-12_10-30-30](https://github.com/RohanSengupta326/MindSpace/assets/64458868/eb426e61-e507-43ac-b639-39561cdcd499)
+![Screenshot_2024-03-12_10-29-41](https://github.com/RohanSengupta326/MindSpace/assets/64458868/35a9540f-c52f-47e5-acc4-50533e43c61e)
 
 
 
@@ -22,7 +28,8 @@ This Flutter web application serves as a comprehensive resource for individuals 
 2. **Installation:**
    - Clone this repository: `git clone https://github.com/RohanSengupta326/MindSpace`
    - Navigate to the project directory: `cd MindSpace`
-   - Install dependencies: `flutter pub get`
+   - install ` fvm ` and install the required version of flutter ( check version here : /MindSpace/mind_space_app/.fvm/fvm_config.json )
+   - Install dependencies: `fvm flutter pub get`
 
 3. **Configuration:**
    - Replace `YOUR_OPENAI_API_KEY` in `MindSpace/mind_space_app/lib/views/widgets/app_drawer/app_drawer.dart` with your actual OpenAI API key.
@@ -37,7 +44,7 @@ This Flutter web application serves as a comprehensive resource for individuals 
      ```
 
 4. **Run the Application:**
-   - Start the development server: `flutter run -d web-server`
+   - Start the development server: `fvm flutter run -d web-server`
    - Access the application in your web browser (usually at `http://localhost:8080/`).
 
 **Usage**
