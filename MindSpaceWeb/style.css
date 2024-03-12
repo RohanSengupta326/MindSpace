@@ -166,15 +166,26 @@ body {
   color:green;
   text-decoration: underline;
 }
-#Download:hover{
+.download:hover{
   color:green;
   text-decoration: underline;
 }
-#Contact:hover{
+.contact:hover{
   color:green;
   text-decoration: underline;
 }
-#About:hover{
+.about:hover{
   color:green;
   text-decoration: underline;
+}
+.trynow{
+  height: 6rem;
+  width: 10rem;
+  background-color: #349c74;
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  /* border: 1px solid black; */
 }
