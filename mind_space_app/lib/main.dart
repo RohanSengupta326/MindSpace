@@ -9,6 +9,8 @@ import 'package:get/get.dart';
 import './views/pages/auth_page.dart';
 import './views/pages/home_page.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 void main() async {
   const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // status bar color
@@ -27,6 +29,7 @@ void main() async {
     ),
   ); // initializing firebase
 
+  await dotenv.load(fileName: '.env');
   runApp(
     const MyApp(), // Wrap your app
   );
