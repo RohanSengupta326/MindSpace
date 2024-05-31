@@ -9,9 +9,6 @@ import 'package:http/http.dart' as http;
 
 import 'package:mind_space_app/controller/auth_user_controller.dart';
 
-import 'package:google_generative_ai/google_generative_ai.dart';
-
-
 class AppDrawer extends StatelessWidget {
   final authUserController = AuthUserController();
 
@@ -83,49 +80,36 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<String> _messages = [];
   bool _isLoading = false; // Track loading state
 
-  final model = GenerativeModel(
-    model: 'gemini-1.5-flash',
-    apiKey: dotenv.get('GEMINI_API'),
-  );
-
   Future<String> chatWithGPT(String message) async {
+    final apiUrl = 'https://api.openai.com/v1/chat/completions';
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization':
+          'Bearer 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',
+    };
 
+    final body = {
+      'model': 'gpt-3.5-turbo',
+      'messages': [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {'role': 'user', 'content': message}
+      ],
+      'max_tokens': 1000,
+    };
 
-    final content = [Content.text(message)];
-    final response = await model.generateContent(content);
-    return response.text;
+    final response = await http.post(Uri.parse(apiUrl),
+        headers: headers, body: jsonEncode(body));
 
+    print('\n${response.body}');
 
-
-    // final apiUrl = 'https://api.openai.com/v1/chat/completions';
-    // final headers = {
-    //   'Content-Type': 'application/json',
-    //   'Authorization':
-    //       'Bearer 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',
-    // };
-    //
-    // final body = {
-    //   'model': 'gpt-3.5-turbo',
-    //   'messages': [
-    //     {"role": "system", "content": "You are a helpful assistant."},
-    //     {'role': 'user', 'content': message}
-    //   ],
-    //   'max_tokens': 1000,
-    // };
-    //
-    // final response = await http.post(Uri.parse(apiUrl),
-    //     headers: headers, body: jsonEncode(body));
-    //
-    // print('\n${response.body}');
-    //
-    // if (response.statusCode == 200) {
-    //   final data = jsonDecode(response.body);
-    //   final completions = data['choices'] as List<dynamic>;
-    //   final completionText = completions.first['message']['content'] as String;
-    //   return completionText;
-    // } else {
-    //   throw Exception('Failed to chat with GPT');
-    // }
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      final completions = data['choices'] as List<dynamic>;
+      final completionText = completions.first['message']['content'] as String;
+      return completionText;
+    } else {
+      throw Exception('Failed to chat with GPT');
+    }
   }
 
   void _sendMessage(String message) async {
