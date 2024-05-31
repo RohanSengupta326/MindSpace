@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "384557827735",
+    "project_id": "mindspaceai-80258",
+    "storage_bucket": "mindspaceai-80258.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384557827735:android:4d412e786a10e6bc22cbd2",
+        "android_client_info": {
+          "package_name": "com.example.mind_space_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384557827735-hbr1t5a5vogkhr77hgb208pa05jno8mk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mind_space_app",
+            "certificate_hash": "088c6f0cf413323402e20a9af0d37d637d8a5c08"
+          }
+        },
+        {
+          "client_id": "384557827735-dnmnn5jfm43ufo6d7qoepeb52tm5ch07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASHW9rvLlL0_mBcbbd2k-qlKw4BWv7xc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384557827735-dnmnn5jfm43ufo6d7qoepeb52tm5ch07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
