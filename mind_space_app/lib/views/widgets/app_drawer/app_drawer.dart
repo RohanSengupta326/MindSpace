@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
+import 'package:mind_space_app/const/const.dart';
 
 import 'package:mind_space_app/controller/auth_user_controller.dart';
 
@@ -85,7 +86,7 @@ class _ChatScreenState extends State<ChatScreen> {
     final headers = {
       'Content-Type': 'application/json',
       'Authorization':
-          'Bearer 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',
+          'Bearer $openAiApiKey',
     };
 
     final body = {
